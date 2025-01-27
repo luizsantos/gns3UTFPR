@@ -118,9 +118,14 @@ echo -e "\t\t\t+ Baixando $dirImg$file3640"
 gDriveDown $googleIDc3640 $dirImg$file3640
 verifyFile $dirImg$file3640
 
+#não sei para que o GNS3 utiliza esse diretório, mas está utilizando
+echo "\t\t* criando diretório /nonexistent/."
+mkdir /nonexistent/
+
 echo "\t\t* Configurando permissões."
-chown -R gns3:ldap /var/gns3/
-chmod -R 775 /var/gns3
+chown -R gns3:ldap /var/gns3/ /nonexistent/
+chmod -R 775 /var/gns3 /nonexistent/
+
 
 echo -e "\t\t* Alterando nome do executável do GNS3."
 if [ ! -e /usr/bin/gns3-gui ]; then
