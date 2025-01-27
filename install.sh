@@ -138,6 +138,7 @@ echo -e "\t\t* Criando arquivo para o GNS3 ser executado como servidor e no proc
 cp etc/gns3.service /etc/systemd/system/gns3.service
 
 echo -e "\t\t\t+ Iniciando o GNS3 e habilitando para o servidor funcionar no processo de boot"
+systemctl daemon-reload
 systemctl start gns3
 systemctl enable gns3
 
