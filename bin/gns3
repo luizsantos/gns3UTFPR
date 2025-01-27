@@ -1,0 +1,14 @@
+#!/bin/bash
+
+USER_DIR="$HOME/.config/GNS3/2.2/"
+CONFIG_DIR="/var/gns3/configs/gui/"
+
+# Cria o diretório de configuração se não existir
+if [ ! -d "$USER_DIR" ]; then
+    echo "Não existe o diretório e arquivos de configuração do GNS3 para o usuário $USER, criando..."
+    mkdir -p "$USER_DIR"
+    cp $CONFIG_DIR*.conf $USER_DIR
+fi
+
+# Inicia o GNS3
+/usr/bin/gns3-gui

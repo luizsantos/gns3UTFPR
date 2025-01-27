@@ -1,0 +1,16 @@
+[Unit]
+Description=GNS3 Server
+After=network.target
+
+[Service]
+Type=simple
+User=gns3
+Group=gns3
+ExecStart=/usr/bin/gns3server --config /etc/gns3/gns3_server.conf
+Restart=on-failure
+WorkingDirectory=/var/gns3
+Environment=PATH=/usr/bin:/usr/local/bin
+
+[Install]
+WantedBy=multi-user.target
+
