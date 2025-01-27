@@ -119,7 +119,7 @@ gDriveDown $googleIDc3640 $dirImg$file3640
 verifyFile $dirImg$file3640
 
 #não sei para que o GNS3 utiliza esse diretório, mas está utilizando
-echo "\t\t* criando diretório /nonexistent/."
+echo -e "\t\t* criando diretório /nonexistent/."
 mkdir /nonexistent/
 
 echo "\t\t* Configurando permissões."
