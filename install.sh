@@ -1,8 +1,5 @@
 #!/bin/bash
 
-ldapUserDir1="/home/usuarios/"
-ldapUserDir1="/home/usuarios/pessoas/"
-
 # Faz download do google drive
 # $1 - idGoogleFile - id of Google Drive File
 # $2 - outFile - name of file
@@ -47,8 +44,8 @@ echo -e "1. Configurando permissões dos diretórios dos usuários ldap:"
 
 echo -e "\t - configurando permissões dos diretórios. "
 # não fiz -R pq pode já existir diretório de usuários lá dentro e ai mudaria a permissão 700 esperada!
-chmod 775 $ldapUserDir1
-chmod 775 $ldapUserDir2
+chmod 775 /home/usuarios/
+chmod 775 /home/usuarios/pessoas/
 
 echo -e "\t - configurando permissões do diretório home. "
 echo -e "\t\t* common-session - umask 077"
