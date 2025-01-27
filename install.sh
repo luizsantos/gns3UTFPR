@@ -34,7 +34,7 @@ verifyFile () {
 
 # O script inicia sua execução aqui!!!
 
-echo -e "Instalação e configuração do GNS3 e Docker, bem como a configuração das permissões dos usuários criados pelo LDAP.\n"
+echo -e "Instalação e configuração do GNS3 e Docker, bem como da configuração das permissões dos usuários criados pelo LDAP.\n"
 
 # Verificar se você tem permissão de root - se não tiver termina.
 echo -e "Verificando se o usuário atual tem permissão de administrador/root."
@@ -137,3 +137,5 @@ cp etc/gns3.service /etc/systemd/system/gns3.service
 echo -e "\t\t\t+ Iniciando o GNS3 e habilitando para o servidor funcionar no processo de boot"
 systemctl start gns3
 systemctl enable gns3
+
+echo -e "Instalação e configuração terminada..."
