@@ -123,10 +123,16 @@ chown -R gns3:ldap /var/gns3/
 chmod -R 775 /var/gns3
 
 echo -e "\t\t* Alterando nome do executável do GNS3."
-mv /usr/bin/gns3 /usr/bin/gns3-gui
+if [ ! -e /usr/bin/gns3-gui ]; then
+    echo -e "\t\t\t+ Arquivo não existia, então foi renomeado!."
+    mv /usr/bin/gns3 /usr/bin/gns3-gui
+else
+    echo -e "\t\t\t+ Arquivo já existia, então nada foi feito."
+fi
 
 echo -e "\t\t* Criando novo executável do GNS3 que copia o arquivo de configuração do ambiente gráfico quando for executado pela primeira vez."
 cp bin/gns3 /usr/bin/
+chmod a+rx /usr/bin/gns3
 
 echo -e "\t\t* Criando arquivo para o GNS3 ser executado como servidor e no processo de boot"
 cp etc/gns3.service /etc/systemd/system/gns3.service
