@@ -97,7 +97,7 @@ chmod -R 755 /etc/gns3/
 echo -e "\t\t* Criando usuário gns3."
 adduser --system --group gns3
 echo -e "\t\t* Adicionando usuário gns3 aos grupos necessários."
-usermod -aG ldap,docker,vboxusers,libvirt-qemu,ubridge
+usermod -aG ldap,docker,vboxusers,libvirt-qemu,ubridge gns3
 
 echo -e "\t\t* Copiando arquivo de configurações, imagens, appliances, etc."
 cp -rf gns3 /var
