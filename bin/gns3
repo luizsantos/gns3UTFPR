@@ -8,6 +8,7 @@ if [ ! -d "$USER_DIR" ]; then
     echo "Não existe o diretório e arquivos de configuração do GNS3 para o usuário $USER, criando..."
     mkdir -p "$USER_DIR"
     cp /var/gns3/configs/gui/gns3_gui.conf $USER_DIR
+    cp /var/gns3/configs/gui/gns3_server.conf $USER_DIR
 fi
 
 # Inicia o GNS3
