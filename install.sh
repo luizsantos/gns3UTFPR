@@ -91,7 +91,7 @@ echo -e "\t - Configurando. "
 echo -e "\t\t* Criando diretório /etc/gns3."
 mkdir /etc/gns3
 echo -e "\t\t* gns3_server.conf."
-cp gns3/configs/gui/*.conf /etc/gns3
+cp etc/gns3*.conf /etc/gns3
 echo -e "\t\t* Permissões."
 chmod -R 755 /etc/gns3/
 echo -e "\t\t* Criando usuário gns3."
@@ -99,7 +99,7 @@ adduser --system --group gns3
 echo -e "\t\t* Adicionando usuário gns3 aos grupos necessários."
 usermod -aG ldap,docker,vboxusers,libvirt-qemu,ubridge gns3
 echo -e "\t\t* Alterando dono e permissão do arquivo de configuração do GNS3."
-chown -R gns3.ldap /etc/gns3
+chown -R gns3:ldap /etc/gns3
 chmod -R 775 /etc/gns3
 
 echo -e "\t\t* Copiando arquivo de configurações, imagens, appliances, etc."
