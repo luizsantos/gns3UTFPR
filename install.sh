@@ -85,7 +85,7 @@ systemctl restart docker
 echo -e "3. Configurando e instalando o GNS3:"
 
 echo -e "\t - Instalando. "
-apt install -y gns3-server gns3-gui gns3-webclient-pack dynamips vpcs ubridge libvirt wireshark xfce4-terminal
+apt install -y gns3-server gns3-gui gns3-webclient-pack dynamips vpcs ubridge wireshark xfce4-terminal
 
 echo -e "\t - Configurando. "
 echo -e "\t\t* Criando diretório /etc/gns3."
@@ -102,9 +102,11 @@ usermod -aG ldap,docker,vboxusers,libvirt-qemu,ubridge suporte
 usermod -aG ldap,docker,vboxusers,libvirt-qemu,ubridge aluno
 echo -e "\t\t* Alterando dono e permissão do arquivo de configuração do GNS3."
 setfacl -d -m u::rwx,g::rwx,o::rx /var/gns3/
-chmod g+s /var/gns3/
+setfacl -d -m u::rwx,g::rwx,o::rx /var/gns3/projects
 chown -R gns3:ldap /etc/gns3
 chmod -R 775 /etc/gns3
+chmod g+s /var/gns3/
+chmod g+s /var/gns3/projects
 
 echo -e "\t\t* Copiando arquivo de configurações, imagens, appliances, etc."
 cp -rf gns3 /var
