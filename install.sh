@@ -85,7 +85,7 @@ systemctl restart docker
 echo -e "3. Configurando e instalando o GNS3:"
 
 echo -e "\t - Instalando. "
-apt install -y gns3-server gns3-gui gns3-webclient-pack wireshark xfce4-terminal
+apt install -y gns3-server gns3-gui gns3-webclient-pack dynamips vpcs ubridge libvirt wireshark xfce4-terminal
 
 echo -e "\t - Configurando. "
 echo -e "\t\t* Criando diretório /etc/gns3."
@@ -95,16 +95,22 @@ cp etc/gns3_server.conf /etc/gns3
 cp etc/gns3_controller.conf /etc/gns3
 echo -e "\t\t* Criando usuário gns3."
 adduser --system --group gns3
+usermod -g ldap gns3
 echo -e "\t\t* Adicionando usuário gns3 aos grupos necessários."
 usermod -aG ldap,docker,vboxusers,libvirt-qemu,ubridge gns3
 usermod -aG ldap,docker,vboxusers,libvirt-qemu,ubridge suporte
 usermod -aG ldap,docker,vboxusers,libvirt-qemu,ubridge aluno
 echo -e "\t\t* Alterando dono e permissão do arquivo de configuração do GNS3."
+setfacl -d -m u::rwx,g::rwx,o::rx /var/gns3/
+chmod g+s /var/gns3/
 chown -R gns3:ldap /etc/gns3
 chmod -R 775 /etc/gns3
 
 echo -e "\t\t* Copiando arquivo de configurações, imagens, appliances, etc."
 cp -rf gns3 /var
+
+#echo -e "\t\t* Copiando icones"
+#cp gns3/icons/* /usr/share/gns3/gns3-server/lib/python3.12/site-packages/gns3server/symbols/classic/
 
 echo -e "\t\t* Baixando imagens."
 
