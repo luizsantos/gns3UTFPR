@@ -111,9 +111,6 @@ chmod g+s /var/gns3/projects
 echo -e "\t\t* Copiando arquivo de configurações, imagens, appliances, etc."
 cp -rf gns3 /var
 
-#echo -e "\t\t* Copiando icones"
-#cp gns3/icons/* /usr/share/gns3/gns3-server/lib/python3.12/site-packages/gns3server/symbols/classic/
-
 echo -e "\t\t* Baixando imagens."
 
 dirImg="/var/gns3/images/IOS/"
@@ -158,5 +155,12 @@ echo -e "\t\t\t+ Iniciando o GNS3 e habilitando para o servidor funcionar no pro
 systemctl daemon-reload
 systemctl start gns3
 systemctl enable gns3
+
+echo -e "3. Configurando e instalando o UFTP:"
+
+echo -e "\t - Instalando UFTP - esse é utilizando no script ClusterFTP "
+apt -y install uftp
+systemctl disable uftp
+
 
 echo -e "Instalação e configuração terminada..."
